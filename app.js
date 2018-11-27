@@ -33,6 +33,11 @@
     // <GroceryListItem item = {props.items[0]}/> 
 
  
+// var GroceryListItem = (props) => (
+//   <li>
+//     {props.item}
+//   </li>
+// );
 
 
 var GroceryList = (props) => {
@@ -42,7 +47,6 @@ var GroceryList = (props) => {
       {
        props.items.map(function(item) {
         return <GroceryListItem item = {item}/>
-
        })
 
       }
@@ -53,11 +57,42 @@ var GroceryList = (props) => {
   
 };
 
-var GroceryListItem = (props) => (
-  <li>
-    {props.item}
-  </li>
-);
+
+
+class GroceryListItem extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      hover: false
+    }
+  }
+
+  onMouseOver() {
+    this.setState({
+      hover: !this.state.hover
+    });
+    console.log('test');
+  }
+  render() {
+   
+     let style = {
+      fontWeight: this.state.hover ? 'bold' : 'normal'
+    }
+
+   
+    
+    return(
+    <li style = {style} onMouseOver = {this.onMouseOver.bind(this)}> 
+      {this.props.item}
+    </li> 
+    )
+
+  }
+
+};
+
 
 
 
