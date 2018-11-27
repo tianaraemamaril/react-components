@@ -22,25 +22,36 @@
 //     <GreenTea />
 //     <Strawberries />
 //   </ul>
-// );    
+// );   
+
+//<li>
+    //   {props.items[0]}
+    // </li>
+    // <li>
+    //   {props.items[1]}
+    // </li>
+    // <GroceryListItem item = {props.items[0]}/> 
 
  
 
 
-var GroceryList = (props) => (
-  <ul>
-    <li>
-      {props.items[0]}
-    </li>
-    <li>
-      {props.items[1]}
-    </li>
-    <GroceryListItem item = {props.items[0]}/>
-  </ul>
+var GroceryList = (props) => {
 
+  return(
+    <ul>
+      {
+       props.items.map(function(item) {
+        return <GroceryListItem item = {item}/>
 
+       })
+
+      }
+
+    </ul>
+
+  );
   
-);
+};
 
 var GroceryListItem = (props) => (
   <li>
